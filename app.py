@@ -87,58 +87,65 @@ SYSTEM_PROMPT = (
 
 
 def process_question(question):
+    try:
+        # Initialize the OpenAI client
+        llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=open_api_key)
 
-    llm=ChatOpenAI(model="gpt-3.5-turbo" ,openai_api_key=open_api_key)
+        # Load a single CSV file as a DataFrame
+        df = pd.read_csv('data.csv')  # Replace with the actual path to your CSV file
 
-    # Load a single CSV file as a DataFrame
-    df = pd.read_csv('data.csv')  # Replace with the actual path to your CSV file
+        # Create Pandas DataFrame Agent for CSV data
+        pandas_agent = create_pandas_dataframe_agent(
+            llm,
+            df,
+            allow_dangerous_code=True,
+            handle_parsing_errors=True,
+            verbose=True
+        )
 
-    # Create Pandas DataFrame Agent for CSV data
-    pandas_agent = create_pandas_dataframe_agent(
-    llm,
-    df,
-    allow_dangerous_code=True, handle_parsing_errors=True,
-    verbose=True
-)
+        # Combine system prompt and question
+        combined_question = f"{SYSTEM_PROMPT}\n\n{question}"
 
-    # Combine system prompt and question
-    combined_question = f"{SYSTEM_PROMPT}\n\n{question}"
+        # Helper function to process grouping queries in the DataFrame agent
+        def handle_grouping_query(dataframe, question):
+            try:
+                # Extract grouping column and aggregation column
+                if "group by" in question.lower():
+                    parts = question.lower().split("group by")
+                    agg_col = parts[0].strip().split(" ")[-1]  # Column to aggregate
+                    group_col = parts[1].strip()  # Column to group by
 
-    # Helper function to process grouping queries in the DataFrame agent
-    # Helper function to process grouping queries in the DataFrame agent
-    def handle_grouping_query(dataframe, question):
-        try:
-            # Extract grouping column and aggregation column
-            if "group by" in question.lower():
-                parts = question.lower().split("group by")
-                agg_col = parts[0].strip().split(" ")[-1]  # Column to aggregate
-                group_col = parts[1].strip()  # Column to group by
+                    # Check if columns exist
+                    if group_col not in dataframe.columns:
+                        return f"Error: Column '{group_col}' not found in DataFrame."
+                    if agg_col not in dataframe.columns:
+                        return f"Error: Column '{agg_col}' not found in DataFrame."
 
-                # Check if columns exist
-                if group_col not in dataframe.columns:
-                    return f"Error: Column '{group_col}' not found in DataFrame."
-                if agg_col not in dataframe.columns:
-                    return f"Error: Column '{agg_col}' not found in DataFrame."
+                    # Perform grouping and aggregation
+                    grouped_data = dataframe.groupby(group_col).agg({agg_col: 'sum'}).reset_index()
+                    return grouped_data.to_dict(orient='records')
+            except Exception as e:
+                return f"An error occurred with grouping: {e}"
 
-                # Perform grouping and aggregation
-                grouped_data = dataframe.groupby(group_col).agg({agg_col: 'sum'}).reset_index()
-                return grouped_data.to_dict(orient='records')
-        except Exception as e:
-            return f"An error occurred with grouping: {e}"
+        # Route the query to the appropriate handler
+        if "group by" in question.lower():
+            # Handle grouping queries
+            response = handle_grouping_query(df, question)
+        else:
+            # Use DataFrame agent for general data queries
+            response = pandas_agent.run(question)
 
-    #  Route the query to the appropriate handler
-    if "group by" in question.lower():
-        # Handle grouping queries
-        response = handle_grouping_query(df, question)
-    else:
-        # Use DataFrame agent for general data queries
-        response = pandas_agent.run(question)
+        # Check if the response is N/A
+        if response == "N/A":
+            response = "Please ask a valid question."
 
-    # Check if the response is N/A
-    if response == "N/A":
-        response = "Please ask a valid question."
+    except Exception as e:
+        # Handle any errors and replace the response with a user-friendly message
+        print(f"Error: {e}")  # Log the error for debugging
+        response = "I am sorry, I don't get the query."
 
     return response
+
 # -------------------------------
 
 # Ask question route to handle user queries
