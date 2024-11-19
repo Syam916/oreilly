@@ -382,6 +382,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-block: 20px;
+  margin-left: 100px;
 }
 
 .nav-open-btn {
@@ -597,10 +598,22 @@ body {
 }
 
 .product-list {
-  display: grid;
-  gap: 50px 25px;
-}
+  display: flex; /* Use flexbox for better alignment control */
+  flex-wrap: wrap; /* Ensure items wrap if there isn’t enough space */
+  justify-content: flex-start; /* Align all items to the left */
+  gap: 20px; /* Add spacing between products */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Ensure no margin */
+  margin-left: -200px; /* Move grid further to the left */
+  padding-left: 0; /* Remove any left padding */
 
+}
+.product-item {
+  flex: 1 1 auto; /* Allow flexibility in sizing */
+  max-width: 300px; /* Ensure proper product width */
+  width: 100%; /* Full width of the parent */
+  margin: 0; /* Remove any margin */
+}
 
 
 
@@ -729,42 +742,6 @@ body {
   display: inline-block;
   color: var(--bittersweet);
 }
-
-
-
-
-
-/*-----------------------------------*\
- * #INSTA POST
-\*-----------------------------------*/
-
-.insta-post-list { gap: 0; }
-
-.insta-post-list .insta-post-item {
-  position: relative;
-  min-width: 33.33%;
-  aspect-ratio: 1 / 1;
-}
-
-.insta-post-link {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: var(--oxford-blue_60);
-  opacity: 0;
-  transition: var(--transition-1);
-}
-
-.insta-post-link ion-icon {
-  color: var(--white);
-  font-size: 40px;
-}
-
-.insta-post-link:is(:hover, :focus) { opacity: 1; }
-
-
-
 
 
 /*-----------------------------------*\
@@ -960,10 +937,13 @@ a.footer-link:is(:hover, :focus) { color: var(--bittersweet); }
    * REUSED STYLE
    */
 
-  .container {
-    max-width: 650px;
-    width: 100%;
-    margin-inline: auto;
+   .container {
+    width: 100%; /* Ensure it stretches the entire page width */
+    max-width: none; /* Remove width restrictions */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    padding-left: 0; /* Remove or minimize left padding */
+    margin-left: 100px; /* Move further left (adjust value as needed) */
   }
 
   .has-scrollbar > li { min-width: calc(50% - 12.5px); }
@@ -1474,3 +1454,26 @@ a.footer-link:is(:hover, :focus) { color: var(--bittersweet); }
 .chatbot-full-page-content button:hover {
   background-color: #e65a4f;
 }
+
+
+/* Chatbot GIF styling */
+.chatbot-gif {
+  position: absolute; /* Ensures it is positioned relative to the chatbot-icon container */
+  bottom: -10px; /* Adjust to position it above the chat icon */
+  right: -30px; /* Align with the chat icon */
+  width: 200px; /* Adjust size */
+  height: 200px; /* Maintain aspect ratio */
+  z-index: 10; /* Ensure it's above other elements */
+  animation: bounce 2s infinite; /* Add some animation for fun */
+}
+
+/* Add a bounce animation for the GIF */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
