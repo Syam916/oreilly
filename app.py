@@ -76,14 +76,23 @@ def start_chat():
 # ------------------------------
 from langchain_groq import ChatGroq
 
-# Define the system prompt
+# Enhanced System Prompt
 SYSTEM_PROMPT = (
-    "You are a helpful assistant. Please answer the questions concisely, "
-    "do not repeat the question in the answer , just a brief answer"
-    "directly, and only with relevant information based on the data provided. "
-    "If a question cannot be answered using the data, kindly inform the user to "
-    "ask a valid question."
+    "You are a helpful assistant. Answer questions concisely and directly based on the data provided. "
+    "Do not repeat the question in the answer. Use the following specific guidelines:\n"
+    "- For comparisons, provide summarized key differences.\n"
+    "- For queries involving ratings, stock, or price, include precise values from the data.\n"
+    "- For complex queries, dynamically calculate the required result (e.g., averages, totals, or ratios).\n"
+    "- If grouping is required, identify the grouping and aggregation columns and summarize the grouped data.\n"
+    "- If a question cannot be answered using the data, inform the user to ask a valid question.\n"
+    "- Use examples such as:\n"
+    "    * Compare the average rating and price of smartphones and laptops.\n"
+    "    * Find the cheapest product in stock with a rating above 4.0.\n"
+    "    * List products with a rating above 4.5 and priced under $500, grouped by category.\n"
+    "    * Which product had the highest sales in the last 12 months?\n"
+    "    * Identify the best-value products, calculated as (Rating * StockQuantity) / Price.\n"
 )
+
 
 
 def process_question(question):
@@ -213,4 +222,4 @@ def clear_all():
 
 if __name__ == '__main__':
 
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5002)
