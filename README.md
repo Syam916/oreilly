@@ -35,7 +35,7 @@ This chatbot will act as the first line of support, reducing the load on human a
 # Architecture Overview
  
 The chatbot architecture is designed to ensure seamless interaction between the user and backend systems, leveraging the power of LLMs and database integration.
-![Vardaan Data Sciences Logo]().
+![Vardaan Data Sciences Logo](https://github.com/Syam916/oreilly/blob/master/Data%20Flow%20Diagram%20Whiteboard%20in%20Dark%20Yellow%20Light%20Yellow%20Black%20Monochromatic%20Style%20(1).png).
  
 ## Key Components:
  
