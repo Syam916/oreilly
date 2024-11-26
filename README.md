@@ -11,7 +11,7 @@ To further enhance its capabilities, ShopWise Solutions is integrating an AI-pow
 # Company Overview
  
 Embark on a transformative data journey with **Vardaan Pioneering Data Sciences**—where innovation maximizes data potential, optimizing operations and streamlining processes for data-driven decision-making.
-![Vardaan Data Sciences Logo](images/logo.png)
+![Vardaan Data Sciences Logo](https://github.com/Syam916/oreilly/blob/master/logo.png.png)
  
 Dedicated to knowledge-sharing, our training programs provide practical skills in the ever-changing world of data sciences. As a consultancy, we bridge the gap between raw data and actionable insights, delivering trends analysis and dashboards using advanced analytics, machine learning, and AI. Welcome to a future where Vardaan Data Sciences Service shapes a transformative path for organizations in the digital age.
  
