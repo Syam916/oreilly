@@ -76,6 +76,13 @@ A flowchart showing the flow of data and interaction for the chatbot.
 
 ![Architecture](https://github.com/Syam916/oreilly/blob/master/Data%20Flow%20Diagram%20Whiteboard%20in%20Dark%20Yellow%20Light%20Yellow%20Black%20Monochromatic%20Style%20(1).png).
 ---
+# Architecture
+
+![Architecture](https://github.com/Syam916/oreilly/blob/master/image%20(1).png)
+
+
+---
+
  
 # Proposed Solution
  
@@ -107,8 +114,7 @@ By adopting the chatbot, ShopWise Solutions eliminated these bottlenecks by:
 ### Diagram Connection Logic  
  
 The diagram represents the core functionalities of a chatbot and how they interact with each other. Each connection has a specific purpose, demonstrating the logical flow of how different features work together to deliver seamless customer service. Below is a breakdown of the components:
- ![Vardaan Data Sciences Logo](https://github.com/Syam916/oreilly/blob/master/image%20(1).png)
----
+ 
  
 ## Functionalities:
  
