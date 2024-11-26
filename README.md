@@ -54,6 +54,26 @@ The chatbot architecture is designed to ensure seamless interaction between the 
  
 ### 5. Feedback Mechanism:
 - Improves accuracy and personalization based on user interactions.
+
+## Flowchart:
+
+A flowchart showing the flow of data and interaction for the chatbot. 
+
+### 1. User Inputs Query:
+- Inputs range from product inquiries to order tracking requests.
+
+### 2. Query Processing:
+- NLP engine processes the query using LLMs.
+
+### 3. Database Access:
+- Queries the relevant dataset (products or orders).
+
+### 4. Response Generation:
+- Generates accurate and context-aware responses.
+
+### 5. User Feedback Loop:
+- Captures user feedback to refine future interactions. 
+
  
 ---
  
