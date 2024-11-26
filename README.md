@@ -29,7 +29,8 @@ The proposed AI-powered chatbot will address the following challenges:
 - Enabling seamless order management and tracking to enhance customer satisfaction.
  
 This chatbot will act as the first line of support, reducing the load on human agents and ensuring an elevated customer experience.
- 
+
+![photo of the website](https://github.com/Syam916/oreilly/blob/master/image.png)
 ---
  
 # Architecture Overview
