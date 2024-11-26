@@ -175,4 +175,4 @@ The diagram represents the core functionalities of a chatbot and how they intera
  
 ---
 
-has context menu
+
