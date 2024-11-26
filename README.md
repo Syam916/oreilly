@@ -78,7 +78,11 @@ By adopting the chatbot, ShopWise Solutions eliminated these bottlenecks by:
 ---
  
 # Vardaan Chatbot Functionalities
- 
+
+![Vardaan Data Sciences Logo](https://github.com/Syam916/oreilly/blob/master/Blue%20and%20White%20Circle%20Organizational%20Chart.png)
+
+
+
 ### Diagram Connection Logic  
  
 The diagram represents the core functionalities of a chatbot and how they interact with each other. Each connection has a specific purpose, demonstrating the logical flow of how different features work together to deliver seamless customer service. Below is a breakdown of the components:
